@@ -1,2 +1,2 @@
 "# database_software"
-set up dev
+set up server
