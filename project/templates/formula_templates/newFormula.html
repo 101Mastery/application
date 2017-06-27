@@ -5,8 +5,16 @@
     <title>Title</title>
 </head>
 <body>
+    <p>user: {{user.name}}</p>
+    <a href='{{url_for('logout')}}'>logout</a>
+    </br>
+    </br>
+    </br>
     <h1>Create a New Formula</h1>
     <form action="{{ url_for('newFormula')}}" method = 'post'>
+
+        <p>Prep Instructions: </p>
+        <textarea name='instructions'rows="4" cols="50"></textarea>
 
         <p>Name: </p>
         <input type = 'text' size='30' name='name'>
