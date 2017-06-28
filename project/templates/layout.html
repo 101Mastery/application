@@ -5,53 +5,123 @@
     <title>Title</title>
 </head>
 <body>
+
     <p>user: {{user.name}}</p>
     <a href='{{url_for('logout')}}'>logout</a>
     </br>
     </br>
     </br>
-    <h1> Formulas </h1>
+    <h1>Create a New Formula</h1>
+    <form action="{{ url_for('newFormula')}}" method = 'post'>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
-        {%with messages = get_flashed_messages() %}
-    {% if messages %}
+<script type='text/javascript'>
+$(document).ready(function() {
+    var max_fields      = 10; //maximum input boxes allowed
+    var wrapper         = $(".steps"); //Fields wrapper
+    var add_button      = $(".add_steps_button"); //Add button ID
 
-    <ul>
-        {% for message in messages %}
-        <li><strong>{{ message}}</strong></li>
-        {% endfor %}
-    </ul>
-    {% endif %}
-    {% endwith %}
+    var x = 1; //initlal text box count
+    $(add_button).click(function(e){ //on add input button click
+        e.preventDefault();
+        if(x < max_fields){ //max input box allowed
+            x++; //text box increment
+            $(wrapper).append('<div><textarea rows="4" cols="50"></textarea> <a href="#" class="remove_field">Remove</a></div>'); //add input box
+        }
+    });
 
-    </br>
+    $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
+        e.preventDefault(); $(this).parent('div').remove(); x--;
+    })
+});
+</script>
 
-    <a href='{{url_for('home')}}'>Home</a>
+        <script type='text/javascript'>
+$(document).ready(function() {
+    var max_fields      = 10; //maximum input boxes allowed
+    var wrapper         = $(".upload"); //Fields wrapper
+    var add_button      = $(".add_uploads_button"); //Add button ID
 
-    </br>
+    var x = 1; //initlal text box count
+    $(add_button).click(function(e){ //on add input button click
+        e.preventDefault();
+        if(x < max_fields){ //max input box allowed
+            x++; //text box increment
+            $(wrapper).append('<div>Select a file: <input type="file" name="upload"> <a href="#" class="remove_field">Remove</a></div>'); //add input box
+        }
+    });
 
-    <a href='{{url_for('newFormula')}}'>Create new Formula</a>
+    $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
+        e.preventDefault(); $(this).parent('div').remove(); x--;
+    })
+});
+</script>
 
-    </br>
-    </br>
+        <p>Name: </p>
+        <input type = 'text' size='30' name='name'>
 
-    {% for i in formulas %}
+        </br>
 
-    Formula Name:
-    {{i.name}}
-    </br>
+        <p>Description: </p>
+        <input type = 'text' size='30' name="description">
 
-    Formula Description:
-    {{i.description}}
-    </br>
+        <p>Prep Instructions: </p>
+        </br>
 
-    <a href='{{url_for('editFormula', formula_id = i.id)}}'>Edit</a>
-    </br>
-    <a href='{{url_for('deleteFormula', formula_id = i.id)}}'>Delete</a>
-    </br>
-    <a href='{{url_for('viewFormula', formula_id = i.id)}}'>view</a>
-    </br>
-    </br>
+    <div><textarea name='prep_instructions'rows="4" cols="50"></textarea></div>
 
-    {% endfor %}
+
+        <p>Instructions: </p>
+        </br>
+        <div class="steps">
+    <input type="button" class="add_steps_button" value="Add More Steps">
+    <div><textarea name='instructions'rows="4" cols="50"></textarea></div>
+</div>
+        <p>Ingredients: </p>
+        Search: <input type="search" name="ingredient_search">
+
+        <p>Quality Insurance: </p>
+
+        <div class="upload">
+            <div>Select a file: <input type="file" name="pdf"><input type="button" class="add_uploads_button" value="+"></div>
+        </div>
+
+        </br>
+        </br>
+
+        Time Required: <input type="text" name="time_required">
+
+        </br>
+        </br>
+
+        Beyond Use: <input type="text" name="time_required">
+
+        </br>
+        </br>
+
+        Storage:
+
+        <input type="radio" name="storage" value="refrigerate" > Refrigerate
+        <input type="radio" name="storage" value="freeze"> Freeze
+        <input type="radio" name="storage" value="deep_freeze"> Deep Freeze
+        </br>
+        </br>
+        <p>Hazards: </p>
+        <input type="checkbox" name="explosive" value="true"> Explosive<br>
+        <input type="checkbox" name="flammable" value="true">Flammable<br>
+        <input type="checkbox" name="oxidizer" value="true">Oxidizer<br>
+        <input type="checkbox" name="corrosive" value="true"> Corrosive<br>
+        <input type="checkbox" name="toxic" value="true">Toxic<br>
+
+        </br>
+        </br>
+
+        <input type = 'submit' value='Create'>
+        <a href = '{{url_for('printFormulas')}}'> <input type = 'button' value='Cancel'></a>
+
+
+
+    </form>
+
 </body>
 </html>
