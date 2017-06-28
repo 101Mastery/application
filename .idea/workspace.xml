@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bf388daa-1c9f-4052-b957-45d7eb9cf24d" name="Default" comment="trying to set up server">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/templates/layout.html" afterPath="$PROJECT_DIR$/project/templates/layout.html" />
-    </list>
+    <list default="true" id="bf388daa-1c9f-4052-b957-45d7eb9cf24d" name="Default" comment="trying to set up server" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -378,7 +376,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="784" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2489019" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
